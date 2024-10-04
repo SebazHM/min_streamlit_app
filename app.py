@@ -12,6 +12,10 @@ def read_data():
             return json.load(f)
     return []
 
+def write_data(data):
+    with open(DATA_FILE, "w") as f:
+        json.dump(data, f)
+
 def add_entry(date, week_num, txt):
     data = read_data()
     data.append({
