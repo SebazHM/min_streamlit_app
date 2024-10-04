@@ -6,7 +6,7 @@ def add_entry(week_num,date,txt):
  table.put_item(
 Item={
 "week_num":week_num,
-"date":date,
+"date":str(date),
 "txt":txt,
 }
 )
