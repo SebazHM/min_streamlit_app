@@ -1,15 +1,26 @@
 import streamlit as st
 import datetime
 import boto3
+import json 
+import os 
 
-def add_entry(week_num,date,txt):
- table.put_item(
-Item={
-"week_num":week_num,
-"date":str(date),
-"txt":txt,
-}
-)
+DATA_FILE = "apl_rapporter.json"
+
+def read_data():
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, "r") as f:
+            return json.load(f)
+    return []
+
+def add_entry(date, week_num, txt):
+    data = read_data()
+    data.append({
+        'week': week_num,
+        'date': date,
+        'txt': txt,
+    })
+    write_data(data)
+ 
 AWS_REGION = "us-east-1"  # Ändra detta till din önskade region, t.ex. "eu-west-1" för Irland
 # Skapa en DynamoDB-resurs med specificerad region
 dynamodb = boto3.resource('dynamodb', region_name=AWS_REGION)
