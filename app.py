@@ -1,6 +1,6 @@
 import streamlit as st
 import datetime
-table = dynamodb.Table("MinWeb")
+table = dynamodb.Table("MinBas")
 today = datetime.datetime.today()
 week_num = today.isocalendar()[1]
 st.write ("Vecka:",week_num,"")
