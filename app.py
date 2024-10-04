@@ -1,6 +1,6 @@
 import streamlit as st
 import datetime
-table = dynamodb.Table("inlägg")
+table = dynamodb.Table("MinWeb")
 today = datetime.datetime.today()
 week_num = today.isocalendar()[1]
 st.write ("Vecka:",week_num,"")
